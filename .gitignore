@@ -60,5 +60,6 @@ typings/
 # next.js build output
 .next
 
-#powerpoint
-.pptx
+# powerpoint
+*.pptx
+*.ppt
