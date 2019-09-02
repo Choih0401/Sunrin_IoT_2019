@@ -1,10 +1,12 @@
 const mysql = require('mysql');
+require('dotenv').config();
+
 const db = {
-  host: 'localhost',
+  host: `${process.env.DB_HOST}`,
   port: 3306,
-  user: 'root',
-  password: 'ch04010508',
-  database: '2019iot'
+  user: `${process.env.DB_USER}`,
+  password: `${process.env.DB_PASS}`,
+  database: `${process.env.DB_NAME}`
 };
 
 var connector
