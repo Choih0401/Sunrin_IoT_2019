@@ -7,6 +7,46 @@
 body,
 html {
   margin: 0;
+  max-width: 100vw;
+}
+
+
+.navbar-toggler {
+  border: 0 !important;
+  padding: 4px !important;
+}
+
+
+
+.room > span {
+  margin-left: 0;
+  opacity: 1;
+  transition: 0.2s;
+}
+.room.open > span {
+  margin-left: -4rem;
+  opacity: 0;
+  transition: 0.2s;
+}
+.room > button {
+  margin-right: -1rem;
+  opacity: 0;
+  transition: 0.2s;
+}
+.room.open > button {
+  margin-right: 0;
+  opacity: 1;
+  transition: 0.2s;
+}
+
+
+#segyero {
+  text-decoration: underline;
+}
+#segyero-icon {
+  width: 1.4em;
+  height: 1.4em;
+  margin-right: 8px;
 }
 
 
@@ -82,18 +122,12 @@ html {
 
 
 
-/* 로그인 */
-#login-content {
-	width: 100vw;
-	height: 100vh;
-	overflow: hidden;
+
+
+
+.font-size-m {
+  font-size: 1.5em
 }
-
-
-
-
-
-
 .cursor-pointer {
   cursor: pointer;
 }
