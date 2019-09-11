@@ -1,5 +1,4 @@
 :root {
-  
 }
 * {
   font-weight: 100;
@@ -83,6 +82,18 @@ html {
 
 
 
+/* 로그인 */
+#login-content {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+}
+
+
+
+
+
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -91,6 +102,11 @@ html {
 }
 .sizing-border {
   box-sizing: border-box;
+}
+.flexXY {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .flexX {
   display: flex;
