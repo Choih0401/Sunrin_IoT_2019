@@ -7,14 +7,14 @@ router.get('/', function(req, res){
   let user = req.session.user;
 
 
-  // if (user === undefined){
-  //   res.redirect('/login');
-  // }
-  // else {
+  if (user === undefined){
+    res.redirect('/login');
+  }
+  else {
     console.log('[index/index]');
     res.render('index', {
     });
-  // }
+  }
 });
 
 router.get('/logout', function(req, res){
