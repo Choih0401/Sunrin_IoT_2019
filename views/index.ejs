@@ -21,25 +21,28 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link active" href="/">컴퓨터실 <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="#">세계로 예약</a>
+                <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#segyero-popup">세계로 예약</a>
                 <a class="nav-item nav-link" href="/login">로그아웃</a>
             </div>
         </div>
     </nav>
 
-    <div id="computer-room-list" class="row m-0 px-1">
+    <form method="POST" action="/" id="computer-room-list" class="row m-0 px-1">
         <%# for (int i = 0; i < 16; i++) { %>
         <div class="room col-12 row justify-content-between m-0 py-3 font-size-m border-bottom">
             <span>컴퓨터 1실</span>
-            <button name="<%#= i + 1 %>" type="button" class="btn-open btn btn-outline-success">열기</button>
+            <button name="room" value="<%#= i + 1 %>" type="button" class="btn-open btn btn-outline-success">열기</button>
         </div>
         <%# } %>
-        <button id="segyero" class="col-12 row m-0 py-3 bg-white border-0" data-toggle="modal"
+        <a href="#" id="segyero" class="col-12 row m-0 py-3 bg-white border-0" data-toggle="modal"
             data-target="#segyero-popup">
             <img id="segyero-icon" src="/public/images/calendar-plus-light.svg" alt="">
             <span>세계로 예약하기</span>
-        </button>
-    </div>
+        </a>
+        <input type="hidden" name="grade" value="<%= grade %>">
+        <input type="hidden" name="class" value="<%#= class %>">
+        <input type="hidden" name="num" value="<%= num %>">
+    </form>
 
 
 
