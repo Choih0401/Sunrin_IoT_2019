@@ -31,7 +31,7 @@
         <%# for (int i = 0; i < 16; i++) { %>
         <div class="room col-12 row justify-content-between m-0 py-3 font-size-m border-bottom">
             <span>컴퓨터 1실</span>
-            <button name="room" value="<%#= i + 1 %>" type="button" class="btn-open btn btn-outline-success">열기</button>
+            <button name="room" value="<%#= i + 1 %>" type="submit" class="btn-open btn btn-outline-success">열기</button>
         </div>
         <%# } %>
         <a href="#" id="segyero" class="col-12 row m-0 py-3 bg-white border-0" data-toggle="modal"
@@ -39,9 +39,9 @@
             <img id="segyero-icon" src="/public/images/calendar-plus-light.svg" alt="">
             <span>세계로 예약하기</span>
         </a>
-        <input type="hidden" name="grade" value="<%= grade %>">
+        <input type="hidden" name="grade" value="<%#= grade %>">
         <input type="hidden" name="class" value="<%#= class %>">
-        <input type="hidden" name="num" value="<%= num %>">
+        <input type="hidden" name="num" value="<%#= num %>">
     </form>
 
 
@@ -52,26 +52,65 @@
     <div class="modal fade" id="segyero-popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
+            <form method="POST" action="/" class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">알림</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">예약 설정</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    세계로 컴퓨터실 예약을 신청하시겠습니까?
-                    <input id="datepicker" width="276" />
-                    <script>
-                        $('#datepicker').datepicker({
-                            uiLibrary: 'bootstrap4'
-                        });
-                    </script>
+                    <div class="form-group">
+                        <label for="segyero-room">세계로 교실</label>
+                        <select name="room" class="form-control" id="segyero-room">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="segyero-datepicker">날짜</label>
+                        <input name="date" type="text" id="segyero-datepicker" placeholder="MM/DD/YYYY">
+                        <script>
+                            $('#segyero-datepicker').datepicker({
+                                uiLibrary: 'bootstrap4'
+                            });
+                        </script>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="segyero-timepicker">시간</label>
+                        <input name="time" type="text" id="segyero-timepicker" placeholder="00:00">
+                        <script>
+                            $('#segyero-timepicker').timepicker({
+                                uiLibrary: 'bootstrap4'
+                            });
+                        </script>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="segyero-representative">대표자</label>
+                        <input name="representative" type="text" class="form-control" id="segyero-representative" placeholder="홍길동">
+                    </div>
+
+                    
+                    <div class="form-group">
+                            <label for="segyero-personnel">인원</label>
+                            <input name="personnel" type="number" class="form-control" id="segyero-personnel" placeholder="1" minlength="1" maxlength="5">
+                        </div>
+
                 </div>
                 <div class="modal-footer">
-                    <a href="#" class="btn btn-success text-white">신청</a>
+                    <button type="submit" class="btn btn-success text-white">신청</button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 
