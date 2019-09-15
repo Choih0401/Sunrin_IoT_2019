@@ -13,8 +13,8 @@ router.get('/', function(req, res){
   // else {
     console.log('[index/index]');
     res.render('index', {
-    // });
-  }
+    });
+  // }
 });
 
 router.get('/logout', function(req, res){
