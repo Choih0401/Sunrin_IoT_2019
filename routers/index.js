@@ -17,6 +17,18 @@ router.get('/', function(req, res){
   // }
 });
 
+router.get('/login', function(req, res){
+  let user = req.session.user;
+    res.render('login', {
+    });
+});
+
+router.get('/register', function(req, res){
+  let user = req.session.user;
+    res.render('register', {
+    });
+});
+
 router.get('/logout', function(req, res){
   console.log('[index/logout]');
   req.session.destroy();
