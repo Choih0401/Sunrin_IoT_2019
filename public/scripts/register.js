@@ -2,6 +2,7 @@
 document.querySelector("#user-confirm-password").addEventListener("focusout", function () {
     if (document.querySelector("#user-password").value != document.querySelector("#user-confirm-password").value) {
         document.querySelector("#user-confirm-password").classList.add("shake");
+        document.querySelector("#user-confirm-password").focus();
         function inconsistencyToast() {
             var x = document.querySelector("#inconsistency-toast");
             x.className = "show";
