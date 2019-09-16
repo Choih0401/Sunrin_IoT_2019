@@ -1,4 +1,4 @@
-const mysql = require('mysql');
+/*const mysql = require('mysql');
 require('dotenv').config();
 
 const db = {
@@ -35,3 +35,4 @@ function handleDisconnect(){
 handleDisconnect();
 
 module.exports = connector;
+*/
