@@ -8,6 +8,7 @@ const bodyParser = require('body-parser')
 const index = require('./routers/index');
 const login = require('./routers/login');
 const register = require('./routers/register');
+const apiRouter = require('./routers/api')
 
 const session = expressSession({
     secret: 'my key',
@@ -27,6 +28,7 @@ app.engine('html', require('ejs').renderFile);
 app.use('/', index);
 app.use('/login', login);
 app.use('/register', register);
+app.use('/api', apiRouter);
 
 app.all('*',
     function(req, res) {
