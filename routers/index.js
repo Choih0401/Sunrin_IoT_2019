@@ -30,6 +30,12 @@ router.get('/register', function(req, res){
     res.render('register', {
     });
 });
+
+router.get('/admin', function(req, res){
+  let user = req.session.user;
+    res.render('admin', {
+    });
+});
 // }
 
 router.get('/logout', function(req, res){

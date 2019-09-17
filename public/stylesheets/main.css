@@ -17,7 +17,7 @@ html {
 }
 
 
-
+/* 컴퓨터실 */
 .room > span {
   margin-left: 0;
   opacity: 1;
@@ -39,7 +39,7 @@ html {
   transition: 0.2s;
 }
 
-
+/* 세계로 */
 #segyero {
   text-decoration: underline;
 }
@@ -48,6 +48,19 @@ html {
   height: 1.4em;
   margin-right: 8px;
 }
+
+
+
+/* 관라자 */
+#admin-contents {
+  height: calc(100% - 56px);
+}
+/* 실시간 로그 */
+#real-time-log {
+  width: 500px;
+  background: #333;
+}
+
 
 
 /* 토스트 */
