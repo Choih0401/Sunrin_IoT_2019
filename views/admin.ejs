@@ -7,28 +7,40 @@
     <% include ./head %>
     <title>Dalcom</title>
     <script src="/public/scripts/admin.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js" defer></script>
 </head>
 
 <body class="vh-100">
 
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Dalcom</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-81">
+        <a class="navbar-brand text-white" href="#">Dalcom</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="/admin">관리자 <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="/logout">로그아웃</a>
+                <a class="nav-item nav-link active text-white" href="/admin">관리자 <span
+                        class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link text-gray" href="#">시간표 설정</a>
+                <a class="nav-item nav-link text-gray" href="#">세계로</a>
+                <a class="nav-item nav-link text-gray" href="/logout">로그아웃</a>
             </div>
         </div>
     </nav>
 
 
     <div id="admin-contents" class="row m-0">
-        <div class="col bg-light">
+        <div class="col bg-f2 m-0 p-5">
+            <div class="w-100 h-fit mb-5">
+                <select name="room" class="admin-pc-room form-control border-0 px-3" id="segyero-room">
+                    <option value="1">컴퓨터 1실</option>
+                </select>
+            </div>
+            <div id="admin-graph-board" class="w-100 bg-white">
+asdf
+            </div>
         </div>
 
         <div id="real-time-log">
