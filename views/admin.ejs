@@ -7,7 +7,6 @@
     <% include ./head %>
     <title>Dalcom</title>
     <script src="/public/scripts/admin.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js" defer></script>
 </head>
 
 <body class="vh-100">
@@ -23,7 +22,8 @@
             <div class="navbar-nav">
                 <a class="nav-item nav-link active text-white" href="/admin">관리자 <span
                         class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link text-gray" href="#">시간표 설정</a>
+                <a id="timetable-button" class="nav-item nav-link text-gray" href="#">시간표
+                    설정</a>
                 <a class="nav-item nav-link text-gray" href="#">세계로</a>
                 <a class="nav-item nav-link text-gray" href="/logout">로그아웃</a>
             </div>
@@ -32,20 +32,40 @@
 
 
     <div id="admin-contents" class="row m-0">
-        <div class="col bg-f2 m-0 p-5">
+        <div class="col bg-f2 m-0 p-5 d-flex flex-column">
             <div class="w-100 h-fit mb-5">
-                <select name="room" class="admin-pc-room form-control border-0 px-3" id="segyero-room">
-                    <option value="1">컴퓨터 1실</option>
+                <select name="room" id="segyero-room" class="admin-pc-room form-control border-0 px-3">
+                    <% for (let i = 1; i <= 10; i++) { %>
+                    <option value="<%= i %>">컴퓨터 <%= i %>실</option>
+                    <% } %>
                 </select>
             </div>
-            <div id="admin-graph-board" class="w-100 bg-white">
-asdf
+            <div id="admin-graph-board" class="w-100 bg-white flex-grow-1 mb-5">
+                <div id="room-1" class="d-none d-block">
+                    컴 1실 그래프
+                </div>
+                <% for (let i = 2; i <= 10; i++) { %>
+                <div id="room-<%= i %>" class="d-none">
+                    컴 <%= i %>실 그래프
+                </div>
+                <% } %>
             </div>
+            <div class="text-center">
+                <a href="#" class="font-size-m"><u>오늘 예외 시간표 설정하기</u></a>
+            </div>
+
         </div>
 
-        <div id="real-time-log">
+        <div id="real-time-log" class="p-3 text-white">
 
         </div>
+    </div>
+
+    <div id="timetable-background" class="vw-100 vh-100 position-fixed fixed-top">
+
+    </div>
+    <div id="timetable" class="w-50 h-75 bg-white position-fixed fixed-top">
+        asdf
     </div>
 
 </body>

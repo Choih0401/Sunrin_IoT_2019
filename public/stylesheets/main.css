@@ -52,8 +52,10 @@ html {
   height: calc(100% - 56px);
 }
 #real-time-log {
+  height: 100%;
   width: 500px;
   background: #333;
+  overflow-y: scroll;
 }
 .bg-81 {
   background-color: #818181;
@@ -87,8 +89,23 @@ html {
 #admin-graph-board {
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.19);
 }
-
-
+#timetable {
+  transform: translate(-100%, 18.75%);
+  transition: 0.2s;
+}
+#timetable.show {
+  transform: translate(0, 18.75%);
+}
+#timetable-background {
+  z-index: -100;
+  background-color: rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transition: 0.2s;
+}
+#timetable-background.show {
+  z-index: 100;
+  opacity: 1;
+}
 
 
 
