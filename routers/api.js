@@ -57,11 +57,13 @@ router.delete("/rent",function(req,res){
 })
 
 router.get("/rent", function(req,res){
+    console.log("hi start")
     Auth.findOne({[Op.and]:{
         roomnum:req.query.roomnum,
         successTime:{[Op.gte]:new Date() - 60000}
     }}).then((hi)=>
     {
+        console.log(`${hi}`)
         if(hi)
         {
             Auth.destroy({where:{
@@ -72,7 +74,9 @@ router.get("/rent", function(req,res){
         }else{            
             res.send(false)
         }
+        res.end();
     })
+    console.log("hi end")
 })
 
 router.get("/log", function(req,res){
