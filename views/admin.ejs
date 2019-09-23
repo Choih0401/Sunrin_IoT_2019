@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<!--<META HTTP-EQUIV="refresh" CONTENT="1">-->
+
+<head>
+    <% include ./head %>
+    <title>Dalcom</title>
+    <script src="/public/scripts/admin.js" defer></script>
+</head>
+
+<%  %>
+
+<body class="vh-100">
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-81">
+        <a class="navbar-brand text-white" href="#">Dalcom</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active text-white" href="/admin">관리자 <span
+                        class="sr-only">(current)</span></a>
+                <a id="timetable-button" class="nav-item nav-link text-gray" href="#">시간표
+                    설정</a>
+                <a class="nav-item nav-link text-gray" href="#">세계로</a>
+                <a class="nav-item nav-link text-gray" href="/logout">로그아웃</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <div id="admin-contents" class="row m-0">
+        <div class="col bg-f2 m-0 p-5 d-flex flex-column">
+            <div class="w-100 h-fit mb-5">
+                <select id="graph-room" class="admin-pc-room form-control border-0 px-3">
+                    <% for (let i = 1; i <= 10; i++) { %>
+                    <option value="<%= i %>">컴퓨터 <%= i %>실</option>
+                    <% } %>
+                </select>
+            </div>
+            <div id="admin-graph-board" class="w-100 bg-white flex-grow-1 mb-5">
+                <div id="graph-room1" class="d-none d-block">
+                    컴 1실 그래프
+                </div>
+                <% for (let i = 2; i <= 10; i++) { %>
+                <div id="graph-room<%= i %>" class="d-none">
+                    컴 <%= i %>실 그래프
+                </div>
+                <% } %>
+            </div>
+            <div class="text-center">
+                <a href="#" class="font-size-m"><u>오늘 예외 시간표 설정하기</u></a>
+            </div>
+
+        </div>
+
+        <div id="real-time-log" class="p-3 text-white">
+
+        </div>
+    </div>
+
+    <div id="timetable-background" class="vw-100 vh-100 position-fixed fixed-top">
+
+    </div>
+
+
+    <div id="timetable" class="w-50  bg-white position-fixed fixed-top">
+        <table class="table text-center">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">월</th>
+                    <th scope="col">화</th>
+                    <th scope="col">수</th>
+                    <th scope="col">목</th>
+                    <th scope="col">금</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (let i = 1; i <= 7; i++) { %>
+                    <tr> 
+                        <% for (let j = 1; j <= 5; j++) { %>
+                            <td><a id="<%= j %><%= i %>" class="dow-cls" href="#"><%= i %>교시</a></td>
+                        <% } %>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+
+        
+        <div class="font-size-m"><span id="yoil-title">ㅇ</span>요일 <span id="gyosi-title">ㅇ</span>교시</div>
+        
+        <form action="/admin" method="POST">
+            <input type="hidden" name="dow" value="0" id="day-of-week">    <!-- 요일(inputDataDayOfWeek) -->
+            <input type="hidden" name="cls" value="0" id="class">    <!-- 교시(inputDataClass) -->
+
+            <table class="table table-bordered mb-0">
+                <% for (let i = 0; i < 3; i++) { %>
+                    <thead class="thead-light">
+                        <tr>
+                            <% for (let j = 1; j <= 6; j++) { %>
+                                <th scope="col">컴퓨터 <%= i * 6 + j %>실</th>
+                            <% } %>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <% for (let j = 1; j <= 6; j++) { %>
+                                <td>
+                                    <select name="room<%= i * 6 + j %>" class="form-control">
+                                        <option value="1-1">1-1</option>
+                                        <option value="1-2">1-2</option>
+                                        <option value="1-3">1-3</option>
+                                    </select>
+                                </td>
+                            <% } %>
+                        </tr>
+                    </tbody>
+                <% } %>
+            </table>
+
+            <button type="submit" class="btn btn-success float-right m-3 px-4">저장하기</button>
+        </form>
+    </div>
+
+
+</body>

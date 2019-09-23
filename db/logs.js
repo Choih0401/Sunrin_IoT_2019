@@ -1,18 +1,17 @@
 const database = require("./initsequelize")
 const sequelize = require("sequelize")
 
-var Plan = database.define('plan', {
+const Log = database.define('log', {
     id: {
         primaryKey: true,
         autoIncrement: true,
         type: sequelize.INTEGER,
     },
-    classnum: sequelize.NUMBER,
-    roomnum: sequelize.NUMBER,
-    startTime: sequelize.DATE,
-    endTime: sequelize.DATE
+    time: { type: sequelize.DATE, defaultValue: sequelize.NOW },
+    msg: sequelize.STRING,
+    type: sequelize.STRING
 });
 
-Plan.sync()
+Log.sync()
 
-module.exports = Plan
+module.exports = Log

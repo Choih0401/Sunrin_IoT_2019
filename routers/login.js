@@ -19,11 +19,7 @@ router.post('/', function(req, res) {
         if (!user) {
             res.render('login', {});
         } else {
-            req.session.user = {
-                username: id,
-                name: user.name,
-                authorized: true
-            };
+            req.session.user = user
             res.redirect('/');
         }
     })

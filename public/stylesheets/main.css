@@ -10,14 +10,12 @@ html {
   max-width: 100vw;
 }
 
-
 .navbar-toggler {
   border: 0 !important;
   padding: 4px !important;
 }
 
-
-
+/* 컴퓨터실 */
 .room > span {
   margin-left: 0;
   opacity: 1;
@@ -39,7 +37,7 @@ html {
   transition: 0.2s;
 }
 
-
+/* 세계로 */
 #segyero {
   text-decoration: underline;
 }
@@ -48,6 +46,74 @@ html {
   height: 1.4em;
   margin-right: 8px;
 }
+
+
+
+
+
+/* 관라자 */
+#admin-contents {
+  height: calc(100% - 56px);
+}
+#real-time-log {
+  height: 100%;
+  width: 500px;
+  background: #333;
+  overflow-y: scroll;
+}
+.bg-81 {
+  background-color: #818181;
+}
+.text-gray {
+  color: #dfdfdf !important;
+  transition: 0.2s;
+}
+.text-gray:hover {
+  color: #c7c7c7 !important;
+  transition: 0.2s;
+}
+.bg-f2 {
+  background-color: #f2f2f2;
+}
+.admin-pc-room {
+  font-size: 1.2em !important;
+  border-radius: 12px !important;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.19);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("/public/images/chevron-down-light.svg");
+  background-repeat: no-repeat;
+  background-size: 20px;
+  background-position: 99% 50%;
+}
+.admin-pc-room::-ms-expand {
+  display: none;
+}
+#admin-graph-board {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.19);
+}
+#timetable {
+  top: 50%;
+  transform: translate(-100%, -50%);
+  transition: 0.2s;
+}
+#timetable.show {
+  transform: translate(0, -50%);
+}
+#timetable-background {
+  z-index: -100;
+  background-color: rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transition: 0.2s;
+}
+#timetable-background.show {
+  z-index: 100;
+  opacity: 1;
+}
+
+
+
 
 
 /* 토스트 */
@@ -93,7 +159,6 @@ html {
   }
 }
 
-
 /* 애니메이션 */
 .shake {
   animation: shake 1s;
@@ -120,15 +185,11 @@ html {
   }
 }
 
-
-
-
-
 .display-4 {
   letter-spacing: -0.125em;
 }
 .font-size-m {
-  font-size: 1.5em
+  font-size: 1.5em;
 }
 .cursor-pointer {
   cursor: pointer;
@@ -140,9 +201,9 @@ html {
   box-sizing: border-box;
 }
 .flexXY {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .flexX {
   display: flex;
@@ -157,4 +218,7 @@ html {
 }
 .display-block {
   display: block;
+}
+.h-fit {
+  height: fit-content !important;
 }
