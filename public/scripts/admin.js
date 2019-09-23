@@ -2,23 +2,22 @@
 function logRenewal() {
     let path;
     let results;
-    path = fetch("/api/logs/", {    // 요청 보낼 주소 값 넣어야함
-        method: "post",
+    // let x;
+    path = fetch("/api/log", {
+        method: "get",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: JSON.stringify({
-            // 요청 보내는 곳
-            "asdf": "요청"
-        })
+        }
     })
     .then(function (response) {
+        // x = JSON.parse(response);
+        // return x.json();
         return response.json();
     })
     .then(function (myJSON) {
         // 요청 받는 값
         results = myJSON;
-        
+        alert(results.msg);
     });
     setTimeout(() => {
         logRenewal();
@@ -27,7 +26,7 @@ function logRenewal() {
 
 // 로그 리뉴얼 시작
 setTimeout(() => {
-    // logRenewal();
+    logRenewal();
 }, 1000);
 
 
@@ -168,7 +167,7 @@ let pcRoomSchedule = [
         room: 6,
         ban: "1-3"
     },
-    ...
+    // ...
     {
         dow: 5,
         cls: 7,

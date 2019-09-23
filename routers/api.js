@@ -30,7 +30,7 @@ router.post("/rent", function(req, res) {
 
 router.get("/log", function(req,res){
     Log.findAll({
-        order: 'time DESC', 
+        order: [['time', 'DESC']], 
         limit: 50, 
         offset: 0
     }).then(
