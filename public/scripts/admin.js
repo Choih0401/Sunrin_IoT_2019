@@ -34,8 +34,8 @@ setTimeout(() => {
 
 
 // 셀렉트박스 선택 시
-let room = document.querySelector("#segyero-room");
-room.addEventListener("change", function () {
+let graphRoom = document.querySelector("#graph-room");
+graphRoom.addEventListener("change", function () {
     // 그래프 바뀜
     document.querySelector("#admin-graph-board > .d-block").classList.remove("d-block");
     document.querySelector("#graph-room" + room.value).classList.add("d-block");
@@ -61,180 +61,103 @@ timetableBackground.addEventListener("click", function () {
 
 // ㅇ요일 ㅇ교시 클릭
 let dowClss = document.querySelectorAll(".dow-cls");
-let yoil = document.querySelector("#yoil");
-let gyosi = document.querySelector("#gyosi");
+let yoilTitle = document.querySelector("#yoil-title");
+let gyosiTitle = document.querySelector("#gyosi-title");
 let inputDataDayOfWeek = document.querySelector("#day-of-week");
 let inputDataClass = document.querySelector("#class");
-for (let dowCls of dowClss) {
-    dowCls.addEventListener("click", function () {
 
-        switch (dowCls.id.charAt(0)) {    // 요일 검사 및 행동
+for (let dowCls of dowClss) {
+    dowCls.addEventListener("click", function () {    // 시간표 설정 창 안의 [n교시]를 클릭했을 때
+        let yoil = dowCls.id.charAt(0);
+        let gyosi = dowCls.id.charAt(1);
+
+        switch (yoil) {    // 요일 검사 및 행동
             case "1":
-                yoil.textContent = "월";
+                yoilTitle.textContent = "월";
                 break;
             case "2":
-                yoil.textContent = "화";
+                yoilTitle.textContent = "화";
                 break;
             case "3":
-                yoil.textContent = "수";
+                yoilTitle.textContent = "수";
                 break;
             case "4":
-                yoil.textContent = "목";
+                yoilTitle.textContent = "목";
                 break;
             case "5":
-                yoil.textContent = "금";
+                yoilTitle.textContent = "금";
                 break;
             default:
-                yoil.textContent = "오류";
+                yoilTitle.textContent = "오류";
                 break;
         }
-        inputDataDayOfWeek.value = dowCls.id.charAt(0);
+        inputDataDayOfWeek.value = yoil;
 
-        gyosi.textContent = dowCls.id.charAt(1);    // 교시 행동
-        inputDataClass.value = dowCls.id.charAt(1);
+        gyosiTitle.textContent = gyosi;
+        inputDataClass.value = gyosi;
 
-        alert((pcRoomSchedule.dow + dowCls.id.charAt(0)));
-        // for (let i = 1; i <= 18; i++) {
-        //     if (pcRoomSchedule.dow
-        //         document.querySelector("select[name=" + i + "]>option")
-        // }
+        let yoilGyosiFiltered = pcRoomSchedule.filter(schedule => schedule.dow == yoil && schedule.cls == gyosi);    // 요일, 교시 필터
+        for (let room = 1; room <= 18; room++) {
+            let roomElement = document.querySelector("[name=room" + room + "]");
+            for (let ban = 1; ban <= 3; ban++) {
+                let banElement = roomElement.querySelector(`[value="1-${ban}"]`);
+
+                let roomBanFiltered = yoilGyosiFiltered.filter(schedule => schedule.room == room && schedule.ban == "1-" + ban);
+
+                if (roomBanFiltered.length == 1) {
+                    banElement.selected = true;
+                } else {
+                    //
+                }
+            }
+        }
 
     });
 }
 
 
-let pcRoomSchedule = {
-	dow1 : {
-		cls1 : {
-			room1: "1-1",
-			room2: "1-1",
-			room3: "1-1",
-			room4: "정답",
-			room5: "1-1",
-			room6: "1-1",
-			room7: "1-1",
-			room8: "1-1",
-			room9: "1-1",
-			room10: "1-1",
-			room11: "1-1",
-			room12: "1-1",
-			room13: "1-1",
-			room14: "1-1",
-			room15: "1-1",
-			room16: "1-1",
-			room17: "1-1",
-			room18: "1-1",
-		},
-		cls2 : {
-			room1: "1-1",
-			room2: "1-1",
-			room3: "1-1",
-			room4: "1-1",
-			room5: "1-1",
-			room6: "1-1",
-			room7: "1-1",
-			room8: "1-1",
-			room9: "1-1",
-			room10: "1-1",
-			room11: "1-1",
-			room12: "1-1",
-			room13: "1-1",
-			room14: "1-1",
-			room15: "1-1",
-			room16: "1-1",
-			room17: "1-1",
-			room18: "1-1"
-		},
-		cls3 : {
-			room1: "1-1",
-			room2: "1-1",
-			room3: "1-1",
-			room4: "1-1",
-			room5: "1-1",
-			room6: "1-1",
-			room7: "1-1",
-			room8: "1-1",
-			room9: "1-1",
-			room10: "1-1",
-			room11: "1-1",
-			room12: "1-1",
-			room13: "1-1",
-			room14: "1-1",
-			room15: "1-1",
-			room16: "1-1",
-			room17: "1-1",
-			room18: "1-1"
-		}
-	},
-	dow2 : {
-		cls1 : {
-			room1: "1-1",
-			room2: "1-1",
-			room3: "1-1",
-			room4: "정답",
-			room5: "1-1",
-			room6: "1-1",
-			room7: "1-1",
-			room8: "1-1",
-			room9: "1-1",
-			room10: "1-1",
-			room11: "1-1",
-			room12: "1-1",
-			room13: "1-1",
-			room14: "1-1",
-			room15: "1-1",
-			room16: "1-1",
-			room17: "1-1",
-			room18: "1-1",
-		},
-		cls2 : {
-			room1: "1-1",
-			room2: "1-1",
-			room3: "1-1",
-			room4: "1-1",
-			room5: "1-1",
-			room6: "1-1",
-			room7: "1-1",
-			room8: "1-1",
-			room9: "1-1",
-			room10: "1-1",
-			room11: "1-1",
-			room12: "1-1",
-			room13: "1-1",
-			room14: "1-1",
-			room15: "1-1",
-			room16: "1-1",
-			room17: "1-1",
-			room18: "1-1"
-		},
-		cls3 : {
-			room1: "1-1",
-			room2: "1-1",
-			room3: "1-1",
-			room4: "1-1",
-			room5: "1-1",
-			room6: "1-1",
-			room7: "1-1",
-			room8: "1-1",
-			room9: "1-1",
-			room10: "1-1",
-			room11: "1-1",
-			room12: "1-1",
-			room13: "1-1",
-			room14: "1-1",
-			room15: "1-1",
-			room16: "1-1",
-			room17: "1-1",
-			room18: "1-1"
-		}
-	},
-	dow3 : {
-		// ...
-	},
-	dow4 : {
-		// ...
-	},
-	dow5 : {
-		// ...
-	}
-}
+let pcRoomSchedule = [
+    {
+        dow: 1,    // Day of week(☆요일)의 앞글자를 따서 dow임. dow: 1은 월요일, dow: 2는 화요일, dow: 5는 금요일. 1~5의 값만 들어감.
+        cls: 1,    // class(교시)를 줄여서 cls임. cls: 1은 1교시, cls: 2는 2교시, cls: 7은 7교시. 1~7의 값만 들어감.
+        room: 1,    // room(컴퓨터 ☆실)을 말함. room: 1은 컴퓨터 1실, room: 2는 컴퓨터 2실, room: 18은 컴퓨터 18실. 1~18의 값만 들어감.
+        ban: "1-1"    // HacknyeonBan(학년 반)을 줄여서 ban임. ban: "1-1"은 1학년 1반, ban: "1-2"은 1학년 2반, ban: "1-3"은 1학년 3반. 총 3개밖에 안들어감(1-1, 1-2, 1-3). 나머지는 금방 만들 수 있으나 쓸모없는 데이터가 커지므로 생략.
+    },
+    {
+        dow: 1,    // 월요일의
+        cls: 1,    // 1교시에
+        room: 2,    // 컴퓨터 2실은
+        ban: "1-2"    // 1학년 2반이 사용합니다.
+    },
+    {
+        dow: 1,
+        cls: 1,
+        room: 3,
+        ban: "1-3"
+    },
+    {
+        dow: 1,
+        cls: 1,
+        room: 4,
+        ban: "1-1"
+    },
+    {
+        dow: 1,
+        cls: 1,
+        room: 5,
+        ban: "1-2"
+    },
+    {
+        dow: 1,
+        cls: 1,
+        room: 6,
+        ban: "1-3"
+    },
+    ...
+    {
+        dow: 5,
+        cls: 7,
+        room: 18,
+        ban: "1-3"
+    }
+]

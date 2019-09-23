@@ -36,7 +36,7 @@
     <div id="admin-contents" class="row m-0">
         <div class="col bg-f2 m-0 p-5 d-flex flex-column">
             <div class="w-100 h-fit mb-5">
-                <select id="segyero-room" class="admin-pc-room form-control border-0 px-3">
+                <select id="graph-room" class="admin-pc-room form-control border-0 px-3">
                     <% for (let i = 1; i <= 10; i++) { %>
                     <option value="<%= i %>">컴퓨터 <%= i %>실</option>
                     <% } %>
@@ -91,7 +91,7 @@
         </table>
 
         
-        <div class="font-size-m"><span id="yoil">ㅇ</span>요일 <span id="gyosi">ㅇ</span>교시</div>
+        <div class="font-size-m"><span id="yoil-title">ㅇ</span>요일 <span id="gyosi-title">ㅇ</span>교시</div>
         
         <form action="/admin" method="POST">
             <input type="hidden" name="dow" value="0" id="day-of-week">    <!-- 요일(inputDataDayOfWeek) -->
