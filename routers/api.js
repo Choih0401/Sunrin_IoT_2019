@@ -5,6 +5,7 @@ const db = require('../db/connector.js');
 const Room = require('../db/rooms')
 const Log = require('../db/logs')
 const Plan = require('../db/plans')
+const Auth = require('../db/auths')
 const sequelize = require('sequelize')
 const Op = sequelize.Op;
 
@@ -21,16 +22,66 @@ router.post("/rent", function(req, res) {
         datas.forEach(element => {
             Room.findOne({where:{no:element.roomnum,otp:req.body.otp}}).then(
                 ele=>{
-                    if(ele)res.send({name:ele.name})
+                    if(ele)
+                    {                        
+                        Auth.create({successTime:new Date(),roomnum:element.roomnum}).then(()=>{
+                            res.send({name:ele.name})
+                        })
+                    }
                 }
             )
         });
     })
 })
 
+router.put("/rent",function(req,res){
+    Plan.create({
+        classnum: res.body.classnum,
+        roomnum: res.body.roomnum,
+        startTime: res.body.startTime,
+        endTime: res.body.endTime
+    }).then(()=>{
+        res.send("OK")
+    })
+})
+
+router.delete("/rent",function(req,res){
+    Plan.destroy({where:{
+        classnum: res.body.classnum,
+        roomnum: res.body.roomnum,
+        startTime: res.body.startTime,
+        endTime: res.body.endTime
+    }}).then(()=>{
+        res.send("OK")
+    })
+})
+
+router.get("/rent", function(req,res){
+    console.log("hi start")
+    Auth.findOne({[Op.and]:{
+        roomnum:req.query.roomnum,
+        successTime:{[Op.gte]:new Date() - 60000}
+    }}).then((hi)=>
+    {
+        console.log(`${hi}`)
+        if(hi)
+        {
+            Auth.destroy({where:{
+                id: hi.id
+            }}).then(()=>{
+                res.send(true)
+            })
+        }else{            
+            res.send(false)
+        }
+        res.end();
+    })
+    console.log("hi end")
+})
+
 router.get("/log", function(req,res){
     Log.findAll({
-        order: [['time', 'DESC']], 
+        order: 'time DESC', 
         limit: 50, 
         offset: 0
     }).then(
