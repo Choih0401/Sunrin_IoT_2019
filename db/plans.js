@@ -9,8 +9,8 @@ var Plan = database.define('plan', {
     },
     classnum: sequelize.NUMBER,
     roomnum: sequelize.NUMBER,
-    startTime: sequelize.TIME,
-    endTime: sequelize.TIME
+    startTime: sequelize.DATE,
+    endTime: sequelize.DATE
 });
 
 Plan.sync()

@@ -6,13 +6,16 @@ const Room = require('../db/rooms')
 const Log = require('../db/logs')
 const Plan = require('../db/plans')
 const sequelize = require('sequelize')
+const Op = sequelize.Op;
 
 router.post("/rent", function(req, res) {
     Plan.findMany({
-        where:{            
-            classnum:req.session.user.classnum,
-            startTime:{le:sequelize.NOW},
-            end:{ge:sequelize.NOW}
+        where:{      
+            [Op.and]: [      
+                {classnum:req.session.user.classnum},
+                {startTime:{[Op.lte]:new Date()}},
+                {end:{[Op.gte]:new Date()}}
+            ]
         }
     }).then((datas)=>{
         datas.forEach(element => {
