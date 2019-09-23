@@ -47,6 +47,10 @@ html {
   margin-right: 8px;
 }
 
+
+
+
+
 /* 관라자 */
 #admin-contents {
   height: calc(100% - 56px);
@@ -90,11 +94,12 @@ html {
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.19);
 }
 #timetable {
-  transform: translate(-100%, 18.75%);
+  top: 50%;
+  transform: translate(-100%, -50%);
   transition: 0.2s;
 }
 #timetable.show {
-  transform: translate(0, 18.75%);
+  transform: translate(0, -50%);
 }
 #timetable-background {
   z-index: -100;
