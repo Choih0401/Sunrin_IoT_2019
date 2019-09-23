@@ -57,11 +57,20 @@ router.delete("/rent",function(req,res){
 })
 
 router.get("/rent", function(req,res){
-    Auth.findOne([Op.and]{
+    Auth.findOne({[Op.and]:{
         roomnum:req.query.roomnum,
-        successTime:{[Op.gte]:now Date() - 60*60}
+        successTime:{[Op.gte]:new Date() - 60000}
+    }}).then((hi)=>
+    {
+        if(hi)
+        {
+            Auth.destroy({where:{
+                id: hi.id
+            }}).then(()=>{
+                res.send(true)
+            })
+        }
     })
-    res.send(true)
 })
 
 router.get("/log", function(req,res){
