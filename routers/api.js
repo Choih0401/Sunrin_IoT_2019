@@ -69,6 +69,8 @@ router.get("/rent", function(req,res){
             }}).then(()=>{
                 res.send(true)
             })
+        }else{            
+            res.send(false)
         }
     })
 })
