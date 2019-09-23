@@ -8,6 +8,7 @@ const Plan = require('../db/plans')
 const Auth = require('../db/auths')
 const sequelize = require('sequelize')
 const Op = sequelize.Op;
+const request = require('request')
 
 router.post("/rent", function(req, res) {
     Plan.findMany({
@@ -56,6 +57,42 @@ router.delete("/rent",function(req,res){
     })
 })
 
+router.post("/sanity", function(req,res){    
+    Plan.findOne({
+        where:{      
+            [Op.and]: [      
+                {roomnum:req.body.roomnum},
+                {startTime:{[Op.lte]:new Date()}},
+                {end:{[Op.gte]:new Date()}}
+            ]
+        }
+    }).then(data=>{
+        if(!data){
+            request({
+              method: 'POST',
+              json: true,
+              uri: 'https://api-sens.ncloud.com/v1/sms/services/ncp:sms:kr:253673265568:woosong-con/messages',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-NCP-auth-key': '2aUYzyYJq3sZokQrZG4y',
+                'X-NCP-service-secret': '5d5ce02e59964782ab4b07bcc9a421c9'
+              },
+              body: {
+                type: 'sms',
+                contentType:"COMM",
+                countryCode:"82",
+                from: '01021904621',
+                to: '01021904621',
+                content: `${req.body.roomnum}실의 문이 예정에 없지만 열렸습니다!`
+              }
+            });
+            res.send("Weird")
+        }else{
+            res.send("OK")
+        }
+    })
+})
+
 router.get("/rent", function(req,res){
     console.log("hi start")
     Auth.findOne({[Op.and]:{
@@ -70,11 +107,12 @@ router.get("/rent", function(req,res){
                 id: hi.id
             }}).then(()=>{
                 res.send(true)
+                res.end();
             })
         }else{            
             res.send(false)
+            res.end();
         }
-        res.end();
     })
     console.log("hi end")
 })
@@ -86,7 +124,7 @@ router.get("/log", function(req,res){
         offset: 0
     }).then(
         (data)=>
-        { 
+        {
             res.send(data)
         }
     );
