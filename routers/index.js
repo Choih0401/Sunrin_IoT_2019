@@ -36,6 +36,12 @@ router.get('/admin', function (req, res) {
   res.render('admin', {
   });
 });
+
+router.get('/auth', function (req, res) {
+  let user = req.session.user;
+  res.render('auth', {
+  });
+});
 // }
 
 router.get('/logout', function (req, res) {
