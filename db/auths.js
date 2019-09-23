@@ -1,7 +1,7 @@
 const database = require("./initsequelize")
 const sequelize = require("sequelize")
 
-var Auth = database.define('plan', {
+var Auth = database.define('auth', {
     id: {
         primaryKey: true,
         autoIncrement: true,
