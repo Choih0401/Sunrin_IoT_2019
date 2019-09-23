@@ -114,11 +114,17 @@ html {
 
 
 
+/* 그래프 */
+#lineChart {
+  width: unset !important;
+  height: unset !important;
+}
+
 
 
 /* 토스트 */
 /* The snackbar - position it at the bottom and in the middle of the screen */
-#inconsistency-toast {
+#snackbar {
   visibility: hidden; /* Hidden by default. Visible on click */
   min-width: 250px; /* Set a default minimum width */
   margin-left: -125px; /* Divide value of min-width by 2 */
@@ -134,7 +140,7 @@ html {
 }
 
 /* Show the snackbar when clicking on a button (class added with JavaScript) */
-#inconsistency-toast.show {
+#snackbar.show {
   visibility: visible; /* Show the snackbar */
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }

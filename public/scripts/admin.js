@@ -36,8 +36,34 @@ setTimeout(() => {
 let graphRoom = document.querySelector("#graph-room");
 graphRoom.addEventListener("change", function () {
     // 그래프 바뀜
-    document.querySelector("#admin-graph-board > .d-block").classList.remove("d-block");
-    document.querySelector("#graph-room" + graphRoom.value).classList.add("d-block");
+    // .......매직........
+});
+
+
+// 곡선그래프
+//line
+var ctxL = document.getElementById("lineChart").getContext('2d');
+var myLineChart = new Chart(ctxL, {
+    type: 'line',
+    data: {
+        labels: ["1교시", "2교시", "3교시", "4교시", "5교시", "6교시", "7교시"],
+        datasets: [{
+            label: "문 여는 시간(분)",
+            data: [6, -2, 3, 2, -1, 9, 1],
+            backgroundColor: [
+                'rgba(105, 0, 132, .2)',
+            ],
+            borderColor: [
+                'rgba(200, 99, 132, .7)',
+            ],
+            borderWidth: 2
+        },
+        ]
+    },
+    options: {
+        lineTension: 0,
+        responsive: true
+    }
 });
 
 
@@ -234,6 +260,11 @@ function saveToast() {
     x.className = "show";
     setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
 }
+
+// 툴팁 띄우기 함수
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
 
 let pcRoomSchedule = [
     {

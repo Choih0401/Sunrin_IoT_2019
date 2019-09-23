@@ -6,12 +6,13 @@
 <head>
     <% include ./head %>
     <title>Dalcom</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <script src="/public/scripts/admin.js" defer></script>
 </head>
 
 <%# pcRoomSchedule %>
 
-<body class="vh-100">
+<body class="vh-100 overflow-hidden">
 
 
     <nav class="navbar navbar-expand-lg navbar-light bg-81">
@@ -42,15 +43,10 @@
                     <% } %>
                 </select>
             </div>
-            <div id="admin-graph-board" class="w-100 bg-white flex-grow-1 mb-5">
-                <div id="graph-room1" class="d-none d-block">
-                    컴 1실 그래프
-                </div>
-                <% for (let i = 2; i <= 10; i++) { %>
-                <div id="graph-room<%= i %>" class="d-none">
-                    컴 <%= i %>실 그래프
-                </div>
-                <% } %>
+            <div id="admin-graph-board" class="row w-100 bg-white flex-grow-1 m-0 mb-5 p-3">
+                
+                <canvas id="lineChart" class="col-12" data-toggle="tooltip" data-html="true" data-placement="left" title="종 치기 몇분 전에 문을 열었는지 확인할 수 있습니다. <hr class='border border-primary border-top-0 m-1'> 수가 높을수록 일찍 열었다는 의미입니다."></canvas>
+
             </div>
             <div class="text-center">
                 <a href="#" class="font-size-m"><u>오늘 예외 시간표 설정하기</u></a>
@@ -81,44 +77,46 @@
             </thead>
             <tbody>
                 <% for (let i = 1; i <= 7; i++) { %>
-                    <tr> 
-                        <% for (let j = 1; j <= 5; j++) { %>
-                            <td><a id="<%= j %><%= i %>" class="dow-cls" href="#"><%= i %>교시</a></td>
-                        <% } %>
-                    </tr>
+                <tr>
+                    <% for (let j = 1; j <= 5; j++) { %>
+                    <td><a id="<%= j %><%= i %>" class="dow-cls" href="#"><%= i %>교시</a></td>
+                    <% } %>
+                </tr>
                 <% } %>
             </tbody>
         </table>
 
-        
+
         <div class="font-size-m"><span id="yoil-title">ㅇ</span>요일 <span id="gyosi-title">ㅇ</span>교시</div>
-        
+
         <form>
-            <input type="hidden" name="dow" value="0" id="day-of-week">    <!-- 요일(inputDataDayOfWeek) --> <!-- 요일, 교시(시간), 몇실, 몇학년 몇반 -->
-            <input type="hidden" name="cls" value="0" id="class">    <!-- 교시(inputDataClass) -->
+            <input type="hidden" name="dow" value="0" id="day-of-week"> <!-- 요일(inputDataDayOfWeek) -->
+            <!-- 요일, 교시(시간), 몇실, 몇학년 몇반 -->
+            <input type="hidden" name="cls" value="0" id="class"> <!-- 교시(inputDataClass) -->
 
             <table class="table table-bordered mb-0">
                 <% for (let i = 0; i < 3; i++) { %>
-                    <thead class="thead-light">
-                        <tr>
-                            <% for (let j = 1; j <= 6; j++) { %>
-                                <th scope="col">컴퓨터 <%= i * 6 + j %>실</th>
-                            <% } %>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <% for (let j = 1; j <= 6; j++) { %>
-                                <td>
-                                    <select name="room<%= i * 6 + j %>" class="form-control">
-                                        <option value="1-1">1-1</option>
-                                        <option value="1-2">1-2</option>
-                                        <option value="1-3">1-3</option>
-                                    </select>
-                                </td>
-                            <% } %>
-                        </tr>
-                    </tbody>
+                <thead class="thead-light">
+                    <tr>
+                        <% for (let j = 1; j <= 6; j++) { %>
+                        <th scope="col">컴퓨터 <%= i * 6 + j %>실</th>
+                        <% } %>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <% for (let j = 1; j <= 6; j++) { %>
+                        <td>
+                            <select name="room<%= i * 6 + j %>" class="form-control">
+                                <option selected>빈 교실</option>
+                                <option value="1-1">1-1</option>
+                                <option value="1-2">1-2</option>
+                                <option value="1-3">1-3</option>
+                            </select>
+                        </td>
+                        <% } %>
+                    </tr>
+                </tbody>
                 <% } %>
             </table>
 
