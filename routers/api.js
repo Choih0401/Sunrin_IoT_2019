@@ -5,12 +5,24 @@ const db = require('../db/connector.js');
 const Room = require('../db/rooms')
 const Log = require('../db/logs')
 const Plan = require('../db/plans')
+const sequelize = require('sequelize')
 
 router.post("/rent", function(req, res) {
-    req.session.user.classnum
-    Plan.findOne({
-        
-    })    
+    Plan.findMany({
+        where:{            
+            classnum:req.session.user.classnum,
+            startTime:{le:sequelize.NOW},
+            end:{ge:sequelize.NOW}
+        }
+    }).then((datas)=>{
+        datas.forEach(element => {
+            Room.findOne({where:{no:element.roomnum,otp:req.body.otp}}).then(
+                ele=>{
+                    if(ele)res.send({name:ele.name})
+                }
+            )
+        });
+    })
 })
 
 router.get("/log", function(req,res){
