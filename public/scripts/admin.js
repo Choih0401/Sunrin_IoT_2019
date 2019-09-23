@@ -38,7 +38,7 @@ let room = document.querySelector("#segyero-room");
 room.addEventListener("change", function () {
     // 그래프 바뀜
     document.querySelector("#admin-graph-board > .d-block").classList.remove("d-block");
-    document.querySelector("#room-" + room.value).classList.add("d-block");
+    document.querySelector("#graph-room" + room.value).classList.add("d-block");
 });
 
 
@@ -63,10 +63,12 @@ timetableBackground.addEventListener("click", function () {
 let dowClss = document.querySelectorAll(".dow-cls");
 let yoil = document.querySelector("#yoil");
 let gyosi = document.querySelector("#gyosi");
+let inputDataDayOfWeek = document.querySelector("#day-of-week");
+let inputDataClass = document.querySelector("#class");
 for (let dowCls of dowClss) {
     dowCls.addEventListener("click", function () {
 
-        switch (dowCls.id.charAt(0)) {    // 요일검사
+        switch (dowCls.id.charAt(0)) {    // 요일 검사 및 행동
             case "1":
                 yoil.textContent = "월";
                 break;
@@ -86,8 +88,17 @@ for (let dowCls of dowClss) {
                 yoil.textContent = "오류";
                 break;
         }
-        
-        gyosi.textContent = dowCls.id.charAt(1);
+        inputDataDayOfWeek.value = dowCls.id.charAt(0);
+
+        gyosi.textContent = dowCls.id.charAt(1);    // 교시 행동
+        inputDataClass.value = dowCls.id.charAt(1);
+
+        alert((pcRoomSchedule.dow + dowCls.id.charAt(0)));
+        // for (let i = 1; i <= 18; i++) {
+        //     if (pcRoomSchedule.dow
+        //         document.querySelector("select[name=" + i + "]>option")
+        // }
+
     });
 }
 

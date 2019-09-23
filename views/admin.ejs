@@ -36,18 +36,18 @@
     <div id="admin-contents" class="row m-0">
         <div class="col bg-f2 m-0 p-5 d-flex flex-column">
             <div class="w-100 h-fit mb-5">
-                <select name="room" id="segyero-room" class="admin-pc-room form-control border-0 px-3">
+                <select id="segyero-room" class="admin-pc-room form-control border-0 px-3">
                     <% for (let i = 1; i <= 10; i++) { %>
                     <option value="<%= i %>">컴퓨터 <%= i %>실</option>
                     <% } %>
                 </select>
             </div>
             <div id="admin-graph-board" class="w-100 bg-white flex-grow-1 mb-5">
-                <div id="room-1" class="d-none d-block">
+                <div id="graph-room1" class="d-none d-block">
                     컴 1실 그래프
                 </div>
                 <% for (let i = 2; i <= 10; i++) { %>
-                <div id="room-<%= i %>" class="d-none">
+                <div id="graph-room<%= i %>" class="d-none">
                     컴 <%= i %>실 그래프
                 </div>
                 <% } %>
@@ -93,9 +93,9 @@
         
         <div class="font-size-m"><span id="yoil">ㅇ</span>요일 <span id="gyosi">ㅇ</span>교시</div>
         
-        <form action="/admin" method="POST"></form>
-            <input id="day-of-week" type="hidden" value="">    <!-- 요일 -->
-            <input id="class" type="hidden" value="">    <!-- 교시 -->
+        <form action="/admin" method="POST">
+            <input type="hidden" name="dow" value="0" id="day-of-week">    <!-- 요일(inputDataDayOfWeek) -->
+            <input type="hidden" name="cls" value="0" id="class">    <!-- 교시(inputDataClass) -->
 
             <table class="table table-bordered mb-0">
                 <% for (let i = 0; i < 3; i++) { %>
