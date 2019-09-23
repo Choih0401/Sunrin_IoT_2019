@@ -3,14 +3,50 @@ const path = require('path');
 const router = express.Router();
 const db = require('../db/connector.js');
 const Room = require('../db/rooms')
+const Log = require('../db/logs')
+const Plan = require('../db/plans')
+const sequelize = require('sequelize')
+const Op = sequelize.Op;
 
-router.get("/rentplan", function(req, res) {
-    //req.body.  
-    const id = req.query.username
-    const selectQuery = "SELECT  (SELECT class FROM user where id = ? LIMIT 1)";
-    db.query(selectQuery, [id, passwd], function(err, result) {
-
+router.post("/rent", function(req, res) {
+    Plan.findMany({
+        where:{      
+            [Op.and]: [      
+                {classnum:req.session.user.classnum},
+                {startTime:{[Op.lte]:new Date()}},
+                {end:{[Op.gte]:new Date()}}
+            ]
+        }
+    }).then((datas)=>{
+        datas.forEach(element => {
+            Room.findOne({where:{no:element.roomnum,otp:req.body.otp}}).then(
+                ele=>{
+                    if(ele)res.send({name:ele.name})
+                }
+            )
+        });
     })
+})
+
+router.get("/log", function(req,res){
+    Log.findAll({
+        order: 'time DESC', 
+        limit: 50, 
+        offset: 0
+    }).then(
+        (data)=>
+        { 
+            res.send(data)
+        }
+    );
+})
+
+router.post("/log", function(req,res){
+    Log.create({ msg: req.body.msg, type: req.body.msg }).then(
+        () => {
+            res.status(200).send("GOOOOD")
+        }
+    )
 })
 
 router.get("/newotp", function(req, res) {
@@ -18,19 +54,12 @@ router.get("/newotp", function(req, res) {
     let newotp = req.query.value;
     console.log(no)
     console.log(newotp)
-    Room.findOne({ where: { no: no } }).then(
-        room => {
-            if (!room) {
-                return Room.create({ no: no })
-            }
-            return room
-        }
-    ).then(
+    Room.findOrCreate({ where: { no: no } }).then(
         room => {
             return Room.update({ otp: newotp }, { where: { id: room.id } })
         }
     ).then(
-        r => {
+        () => {
             res.status(200).send("GOOOOD")
         }
     ).catch(reason => res.status(500).send(reason))
