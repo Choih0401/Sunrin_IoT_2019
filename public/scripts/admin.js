@@ -9,16 +9,16 @@ function logRenewal() {
             "Content-Type": "application/x-www-form-urlencoded",
         }
     })
-    .then(function (response) {
-        // x = JSON.parse(response);
-        // return x.json();
-        return response.json();
-    })
-    .then(function (myJSON) {
-        // 요청 받는 값
-        results = myJSON;
-        alert(results.msg);
-    });
+        .then(function (response) {
+            // x = JSON.parse(response);
+            // return x.json();
+            return response.json();
+        })
+        .then(function (myJSON) {
+            // 요청 받는 값
+            results = myJSON;
+            results.msg
+        });
     setTimeout(() => {
         logRenewal();
     }, 1000);
@@ -37,7 +37,7 @@ let graphRoom = document.querySelector("#graph-room");
 graphRoom.addEventListener("change", function () {
     // 그래프 바뀜
     document.querySelector("#admin-graph-board > .d-block").classList.remove("d-block");
-    document.querySelector("#graph-room" + room.value).classList.add("d-block");
+    document.querySelector("#graph-room" + graphRoom.value).classList.add("d-block");
 });
 
 
@@ -110,10 +110,130 @@ for (let dowCls of dowClss) {
                 }
             }
         }
-
     });
 }
 
+
+// 저장하기 버튼 클릭 시
+let startTime, endTime;
+let classnum, roomnum;
+const date = new Date();
+let thisWeek = findThisWeek(date);    // [일, 월, 화, 수, 목, 금, 토] (YYYYMMDD)
+document.querySelector("#info-submit").addEventListener("click", () => {
+    let yoil = inputDataDayOfWeek.value;
+    let gyosi = inputDataClass.value;
+    let d, e;
+
+    let startYoilTime = endYoilTime = thisWeek[yoil];
+
+    let startGyosiTime, endGyosiTime;
+    switch (gyosi) {
+        case "1":
+            startGyosiTime = " 08:30:00";   // 쉬는시간 10분씩 감안
+            endGyosiTime = " 09:40:00";
+            break;
+        case "2":
+            startGyosiTime = " 09:30:00";
+            endGyosiTime = " 10:40:00";
+            break;
+        case "3":
+            startGyosiTime = " 10:30:00";
+            endGyosiTime = " 11:40:00";
+            break;
+        case "4":
+            startGyosiTime = " 11:30:00";
+            endGyosiTime = " 12:40:00";
+            break;
+        case "5":
+            startGyosiTime = " 13:20:00";
+            endGyosiTime = " 14:30:00";
+            break;
+        case "6":
+            startGyosiTime = " 14:20:00";
+            endGyosiTime = " 15:30:00";
+            break;
+        case "7":
+            startGyosiTime = " 15:20:00";
+            endGyosiTime = " 16:30:00";
+            break;
+        default:
+            startGyosiTime = " 00:00:00";
+            endGyosiTime = " 00:00:00";
+    }
+
+    d = startYoilTime + startGyosiTime;
+    e = new Date(d);
+    startTime = e.getTime();
+
+    d = endYoilTime + endGyosiTime;
+    e = new Date(d);
+    endTime = e.getTime();
+
+    for (let i = 1; i <= 18; i++) {
+        roomnum = i;
+        classnum = parseInt(document.querySelector("[name=room" + i + "]").value.replace('-', '0'));
+        console.log(classnum);
+
+        let path;
+        let results;
+        for (let i = 1; i <= 18; i++) {
+            path = fetch("/api/rent", {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: {
+                    startTime: startTime,   // 1569195600000
+                    endTime: endTime,       // 1569198600000
+                    roomnum: roomnum,       // 1 ~ 18
+                    classnum: classnum      // 101, 102, 103
+                }
+            })
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (myJSON) {
+                    // 요청 받는 값
+                    results = myJSON;
+                    saveToast();
+                });
+        }
+    }
+
+})
+
+// 이번주(일~토) 구하는 함수
+function findThisWeek(date) {
+    let theYear = date.getFullYear();
+    let theMonth = date.getMonth();
+    let theDate = date.getDate();
+    let theDayOfWeek = date.getDay();
+
+    let thisWeek = [];
+
+    for (let i = 0; i < 7; i++) {
+        let resultDay = new Date(theYear, theMonth, theDate + (i - theDayOfWeek));
+        let yyyy = resultDay.getFullYear();
+        let mm = Number(resultDay.getMonth()) + 1;
+        let dd = resultDay.getDate();
+
+        mm = String(mm).length === 1 ? '0' + mm : mm;
+        dd = String(dd).length === 1 ? '0' + dd : dd;
+
+        thisWeek[i] = mm + '/' + dd + '/' + yyyy;
+    }
+
+    return thisWeek;
+}
+
+
+
+// 토스트 띄우기 함수
+function saveToast() {
+    var x = document.getElementById("snackbar");
+    x.className = "show";
+    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+}
 
 let pcRoomSchedule = [
     {

@@ -68,7 +68,7 @@
     </div>
 
 
-    <div id="timetable" class="w-50  bg-white position-fixed fixed-top">
+    <div id="timetable" class="w-50 bg-white position-fixed fixed-top">
         <table class="table text-center">
             <thead class="thead-dark">
                 <tr>
@@ -93,8 +93,8 @@
         
         <div class="font-size-m"><span id="yoil-title">ㅇ</span>요일 <span id="gyosi-title">ㅇ</span>교시</div>
         
-        <form action="/admin" method="POST">
-            <input type="hidden" name="dow" value="0" id="day-of-week">    <!-- 요일(inputDataDayOfWeek) -->
+        <form>
+            <input type="hidden" name="dow" value="0" id="day-of-week">    <!-- 요일(inputDataDayOfWeek) --> <!-- 요일, 교시(시간), 몇실, 몇학년 몇반 -->
             <input type="hidden" name="cls" value="0" id="class">    <!-- 교시(inputDataClass) -->
 
             <table class="table table-bordered mb-0">
@@ -122,9 +122,10 @@
                 <% } %>
             </table>
 
-            <button type="submit" class="btn btn-success float-right m-3 px-4">저장하기</button>
+            <button id="info-submit" type="button" class="btn btn-success float-right m-3 px-4">저장하기</button>
         </form>
     </div>
 
-
+    <!-- The actual snackbar -->
+    <div id="snackbar">저장되었습니다.</div>
 </body>
