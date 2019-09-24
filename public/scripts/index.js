@@ -25,3 +25,12 @@ for (let btnOpen of btnOpens) {
 segyero.addEventListener("click", function () {
 
 })
+
+document.querySelector("#segyero-submit").addEventListener("click", () => {
+    var x = document.getElementById("snackbar");
+    x.className = "show";
+    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+})
+
+
+

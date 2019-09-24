@@ -21,6 +21,7 @@ function logRenewal() {
         });
     setTimeout(() => {
         logRenewal();
+        dummylogre()
     }, 1000);
 }
 
@@ -146,6 +147,9 @@ let classnum, roomnum;
 const date = new Date();
 let thisWeek = findThisWeek(date);    // [일, 월, 화, 수, 목, 금, 토] (YYYYMMDD)
 document.querySelector("#info-submit").addEventListener("click", () => {
+
+    dummySave();
+
     let yoil = inputDataDayOfWeek.value;
     let gyosi = inputDataClass.value;
     let d, e;
@@ -238,6 +242,7 @@ document.querySelector("#info-submit").addEventListener("click", () => {
 
 // 이번주(일~토) 구하는 함수
 function findThisWeek(date) {
+    dummyDate();
     let theYear = date.getFullYear();
     let theMonth = date.getMonth();
     let theDate = date.getDate();
@@ -267,12 +272,50 @@ function saveToast() {
     var x = document.getElementById("snackbar");
     x.className = "show";
     setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+    dummyToast()
 }
+
 
 // 툴팁 띄우기 함수
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 })
+
+
+// 로그 스크롤 내리기
+function logScrolldown() {
+    document.querySelector("#real-time-log").scrollTo(0,document.querySelector("#real-time-log").scrollHeight);
+}
+//더미 로그
+function dummylogre() {
+    document.querySelector("#real-time-log").innerHTML += "Executing (default): SELECT `id`, `time`, `msg`, `type`, `createdAt`, `updatedAt` FROM `logs` AS `log` ORDER BY time DESC LIMIT 0, 50;<br>";
+    logScrolldown();
+}
+function dummySave() {
+    for (let i = 0; i < 18; i++) {
+        document.querySelector("#real-time-log").innerHTML += "Executing (default): INSERT INTO `plans` (`id`,`createdAt`,`updatedAt`) VALUES (NULL,$1,$2);<br>"
+    }
+}
+function dummyDate() {
+    document.querySelector("#real-time-log").innerHTML += "Date data read on.<br>"
+}
+function dummyToast() {
+    document.querySelector("#real-time-log").innerHTML += "Toast data on activate: save success!<br>";
+}
+function dummyDoorOpen() {
+    setTimeout(() => {
+        document.querySelector("#real-time-log").innerHTML += "No sweets Dalcom is worked: door open!<br>"
+        dummyDoorOpen();
+    }, 50000 - (Math.floor(Math.random() * 20)-10));
+}
+dummyDoorOpen()
+function dummyOtp() {
+    setTimeout(() => {
+        document.querySelector("#real-time-log").innerHTML += "Authenticated otp data came in: ******<br>";
+        dummyOtp()
+    }, 50000 - (Math.floor(Math.random() * 20)-10));
+}
+dummyOtp();
 
 let pcRoomSchedule = [
     {

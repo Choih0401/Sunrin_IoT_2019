@@ -53,7 +53,7 @@
     <div class="modal fade" id="segyero-popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <form method="POST" action="/" class="modal-content">
+            <form id="segyero-form" class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">예약 설정</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -109,13 +109,13 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success text-white">신청</button>
+                    <button id="segyero-submit" type="button" class="btn btn-success text-white">신청</button>
                 </div>
             </form>
         </div>
     </div>
 
-
+    <div id="snackbar">신청되었습니다.</div>
 
 </body>
 
