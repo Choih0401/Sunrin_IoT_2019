@@ -201,28 +201,37 @@ document.querySelector("#info-submit").addEventListener("click", () => {
 
         let path;
         let results;
-        for (let i = 1; i <= 18; i++) {
-            path = fetch("/api/rent", {
-                method: "put",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                },
-                body: {
-                    classnum: classnum,      // 000, 101, 102, 103
-                    roomnum: roomnum,       // 1 ~ 18
-                    startTime: startTime,   // 1569195600000
-                    endTime: endTime      // 1569198600000
-                }
+        // path = fetch("/api/rent", {     // 지우는 패치
+        //     method: "DELETE",
+        //     body: {
+        //         classnum: classnum,
+        //         roomnum: roomnum,
+        //         startTime: startTime,
+        //         endTime: endTime
+        //     }
+        // }).then(response => response.json())
+
+        path = fetch("/api/rent", {     // 만드는 패치
+            method: "put",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: {
+                classnum: classnum,      // 000, 101, 102, 103
+                roomnum: roomnum,       // 1 ~ 18
+                startTime: startTime,   // 1569195600000
+                endTime: endTime      // 1569198600000
+            }
+        })
+            .then(function (response) {
+                return response.json();
             })
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (myJSON) {
-                    // 요청 받는 값
-                    results = myJSON;
-                    saveToast();
-                });
-        }
+            .then(function (myJSON) {
+                // 요청 받는 값
+                results = myJSON;
+                saveToast();
+            });
+
     }
 
 })
