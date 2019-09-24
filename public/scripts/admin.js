@@ -208,10 +208,10 @@ document.querySelector("#info-submit").addEventListener("click", () => {
                     "Content-Type": "application/x-www-form-urlencoded",
                 },
                 body: {
-                    startTime: startTime,   // 1569195600000
-                    endTime: endTime,       // 1569198600000
+                    classnum: classnum,      // 000, 101, 102, 103
                     roomnum: roomnum,       // 1 ~ 18
-                    classnum: classnum      // 000, 101, 102, 103
+                    startTime: startTime,   // 1569195600000
+                    endTime: endTime      // 1569198600000
                 }
             })
                 .then(function (response) {

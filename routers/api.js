@@ -37,10 +37,10 @@ router.post("/rent", function(req, res) {
 
 router.put("/rent",function(req,res){
     Plan.create({
-        classnum: res.params.classnum,
-        roomnum: res.params.roomnum,
-        startTime: res.params.startTime,
-        endTime: res.params.endTime
+        classnum: res.body.classnum,
+        roomnum: res.body.roomnum,
+        startTime: res.body.startTime,
+        endTime: res.body.endTime
     }).then(()=>{
         res.send("OK")
     })
@@ -48,10 +48,10 @@ router.put("/rent",function(req,res){
 
 router.delete("/rent",function(req,res){
     Plan.destroy({where:{
-        classnum: res.params.classnum,
-        roomnum: res.params.roomnum,
-        startTime: res.params.startTime,
-        endTime: res.params.endTime
+        classnum: res.body.classnum,
+        roomnum: res.body.roomnum,
+        startTime: res.body.startTime,
+        endTime: res.body.endTime
     }}).then(()=>{
         res.send("OK")
     })
