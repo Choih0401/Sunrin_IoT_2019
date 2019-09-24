@@ -7,18 +7,17 @@ router.get('/', function (req, res) {
   let user = req.session.user;
 
   // 주석 해제해야함
-  // if (user === undefined){
-  //   res.redirect('/login');
-  // }
-  // else {
+  if (user === undefined){
+    res.redirect('/login');
+  }
+  else {
   console.log('[index/index]');
   res.render('index', {
   });
-  // }
+  }
 });
 
 
-// 지워야함 {
 router.get('/login', function (req, res) {
   let user = req.session.user;
   res.render('login', {
@@ -42,7 +41,6 @@ router.get('/auth', function (req, res) {
   res.render('auth', {
   });
 });
-// }
 
 router.get('/logout', function (req, res) {
   console.log('[index/logout]');

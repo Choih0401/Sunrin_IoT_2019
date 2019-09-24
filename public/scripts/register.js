@@ -23,3 +23,7 @@ document.querySelector("#user-confirm-password").addEventListener("keyup", funct
         document.querySelector('#register-submit').disabled = true;
     }
 });
+
+document.querySelector("#register-submit").addEventListener("click", function () {
+    
+})

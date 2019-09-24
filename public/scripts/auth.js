@@ -22,5 +22,6 @@ document.querySelector("#otp-submit").addEventListener("click", () => {
             // 요청 받는 값
             results = myJSON;
             results.msg
+            document.querySelector("#goHome").click();
         });
 });

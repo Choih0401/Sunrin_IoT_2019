@@ -340,10 +340,10 @@ let pcRoomSchedule = [
                      */
     },
     {
-        dow: 1,    // 월요일의
-        cls: 1,    // 1교시에
-        room: 2,    // 컴퓨터 2실은
-        ban: "1-2"    // 1학년 2반이 사용합니다. 라는 의미
+        dow: 1,
+        cls: 1,
+        room: 2,
+        ban: "1-2"
     },
     {
         dow: 1,
@@ -368,6 +368,385 @@ let pcRoomSchedule = [
         cls: 1,
         room: 6,
         ban: "1-3"
+    },{
+        dow: 1,
+        cls: 1,
+        room: 7,
+        ban: "1-3"
+    },
+    {
+        dow: 1,
+        cls: 1,
+        room: 8,
+        ban: "1-1"
+    },
+    {
+        dow: 1,
+        cls: 1,
+        room: 9,
+        ban: "1-2"
+    },
+    {
+        dow: 1,
+        cls: 1,
+        room: 10,
+        ban: "1-3"
+    },
+    {
+        dow: 1,
+        cls: 1,
+        room: 11,
+        ban: "1-2"
+    },
+    {
+        dow: 1,
+        cls: 1,
+        room: 12,
+        ban: "1-3"
+    },
+    {
+        dow: 1,
+        cls: 1,
+        room: 13,
+        ban: "1-3"
+    },{
+        dow: 1,
+        cls: 1,
+        room: 14,
+        ban: "1-3"
+    },
+    {
+        dow: 1,
+        cls: 1,
+        room: 15,
+        ban: "1-1"
+    },
+    {
+        dow: 1,
+        cls: 1,
+        room: 16,
+        ban: "1-2"
+    },
+    {
+        dow: 1,
+        cls: 1,
+        room: 17,
+        ban: "1-3"
+    },
+    {
+        dow: 1,
+        cls: 1,
+        room: 18,
+        ban: "1-2"
+    },
+    // ...
+    {
+        dow: 1,
+        cls: 2,
+        room: 2,
+        ban: "1-2"
+    },
+    {
+        dow: 1,
+        cls: 2,
+        room: 3,
+        ban: "1-3"
+    },
+    {
+        dow: 1,
+        cls: 2,
+        room: 4,
+        ban: "1-1"
+    },
+    {
+        dow: 1,
+        cls: 2,
+        room: 5,
+        ban: "1-2"
+    },
+    {
+        dow: 1,
+        cls: 2,
+        room: 6,
+        ban: "1-3"
+    },{
+        dow: 1,
+        cls: 2,
+        room: 7,
+        ban: "1-3"
+    },
+    {
+        dow: 1,
+        cls: 2,
+        room: 8,
+        ban: "1-1"
+    },
+    {
+        dow: 1,
+        cls: 2,
+        room: 9,
+        ban: "1-2"
+    },
+    {
+        dow: 1,
+        cls: 2,
+        room: 10,
+        ban: "1-3"
+    },
+    {
+        dow: 1,
+        cls: 2,
+        room: 11,
+        ban: "1-2"
+    },
+    {
+        dow: 1,
+        cls: 2,
+        room: 12,
+        ban: "1-3"
+    },
+    {
+        dow: 1,
+        cls: 2,
+        room: 13,
+        ban: "1-3"
+    },{
+        dow: 1,
+        cls: 2,
+        room: 14,
+        ban: "1-3"
+    },
+    {
+        dow: 1,
+        cls: 2,
+        room: 15,
+        ban: "1-1"
+    },
+    {
+        dow: 1,
+        cls: 2,
+        room: 16,
+        ban: "1-2"
+    },
+    {
+        dow: 1,
+        cls: 2,
+        room: 17,
+        ban: "1-3"
+    },
+    {
+        dow: 1,
+        cls: 2,
+        room: 18,
+        ban: "1-2"
+    },
+    // ...333333333333333333333
+    {
+        dow: 1,
+        cls: 3, 
+        room: 1,  
+        ban: "1-1" 
+    },
+    {
+        dow: 1,
+        cls: 3,
+        room: 2,
+        ban: "1-2"
+    },
+    {
+        dow: 1,
+        cls: 3,
+        room: 3,
+        ban: "1-3"
+    },
+    {
+        dow: 1,
+        cls: 3,
+        room: 4,
+        ban: "1-1"
+    },
+    {
+        dow: 1,
+        cls: 3,
+        room: 5,
+        ban: "1-2"
+    },
+    {
+        dow: 1,
+        cls: 3,
+        room: 6,
+        ban: "1-3"
+    },{
+        dow: 1,
+        cls: 3,
+        room: 7,
+        ban: "1-3"
+    },
+    {
+        dow: 1,
+        cls: 3,
+        room: 8,
+        ban: "1-1"
+    },
+    {
+        dow: 1,
+        cls: 3,
+        room: 9,
+        ban: "1-2"
+    },
+    {
+        dow: 1,
+        cls: 3,
+        room: 10,
+        ban: "1-3"
+    },
+    {
+        dow: 1,
+        cls: 3,
+        room: 11,
+        ban: "1-2"
+    },
+    {
+        dow: 1,
+        cls: 3,
+        room: 12,
+        ban: "1-3"
+    },
+    {
+        dow: 1,
+        cls: 3,
+        room: 13,
+        ban: "1-3"
+    },{
+        dow: 1,
+        cls: 3,
+        room: 14,
+        ban: "1-3"
+    },
+    {
+        dow: 1,
+        cls: 3,
+        room: 15,
+        ban: "1-1"
+    },
+    {
+        dow: 1,
+        cls: 3,
+        room: 16,
+        ban: "1-2"
+    },
+    {
+        dow: 1,
+        cls: 3,
+        room: 17,
+        ban: "1-3"
+    },
+    {
+        dow: 1,
+        cls: 3,
+        room: 18,
+        ban: "1-2"
+    },
+    // ...
+    {
+        dow: 1,
+        cls: 4,
+        room: 2,
+        ban: "1-2"
+    },
+    {
+        dow: 1,
+        cls: 4,
+        room: 3,
+        ban: "1-3"
+    },
+    {
+        dow: 1,
+        cls: 4,
+        room: 4,
+        ban: "1-1"
+    },
+    {
+        dow: 1,
+        cls: 4,
+        room: 5,
+        ban: "1-2"
+    },
+    {
+        dow: 1,
+        cls: 4,
+        room: 6,
+        ban: "1-3"
+    },{
+        dow: 1,
+        cls: 4,
+        room: 7,
+        ban: "1-3"
+    },
+    {
+        dow: 1,
+        cls: 4,
+        room: 8,
+        ban: "1-1"
+    },
+    {
+        dow: 1,
+        cls: 4,
+        room: 9,
+        ban: "1-2"
+    },
+    {
+        dow: 1,
+        cls: 4,
+        room: 10,
+        ban: "1-3"
+    },
+    {
+        dow: 1,
+        cls: 4,
+        room: 11,
+        ban: "1-2"
+    },
+    {
+        dow: 1,
+        cls: 4,
+        room: 12,
+        ban: "1-3"
+    },
+    {
+        dow: 1,
+        cls: 4,
+        room: 13,
+        ban: "1-3"
+    },{
+        dow: 1,
+        cls: 4,
+        room: 14,
+        ban: "1-3"
+    },
+    {
+        dow: 1,
+        cls: 4,
+        room: 15,
+        ban: "1-1"
+    },
+    {
+        dow: 1,
+        cls: 4,
+        room: 16,
+        ban: "1-2"
+    },
+    {
+        dow: 1,
+        cls: 4,
+        room: 17,
+        ban: "1-3"
+    },
+    {
+        dow: 1,
+        cls: 4,
+        room: 18,
+        ban: "1-2"
     },
     // ...
     {
