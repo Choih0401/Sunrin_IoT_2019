@@ -2,6 +2,9 @@ document.querySelector("#otp-submit").addEventListener("click", () => {
     let path;
     let results;
     let otp = document.querySelector("#otp").value;
+    setTimeout(() => {
+        document.querySelector("#goHome").click();
+    }, 1000);
     
     // let x;
     path = fetch("/api/rent", {
@@ -25,4 +28,5 @@ document.querySelector("#otp-submit").addEventListener("click", () => {
             results.msg
             document.querySelector("#goHome").click();
         });
+    
 });
