@@ -34,7 +34,7 @@ router.post("/rent", function(req, res) {
                     }
                 },
                 {
-                    end: {
+                    endTime: {
                         [Op.gte]: new Date()
                     }
                 }
