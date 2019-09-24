@@ -4,7 +4,7 @@
 <head>
     <% include ./head %>
     <title>Dalcom</title>
-    <script src="/public/scripts/login.js" defer></script>
+    <script src="/public/scripts/auth.js" defer></script>
 </head>
 
 <body class="vh-100">
@@ -18,26 +18,22 @@
             <div class="navbar-nav">
                 <a class="nav-item nav-link disabled" href="/">컴퓨터실</a>
                 <a class="nav-item nav-link disabled" href="#">세계로 예약</a>
-                <a class="nav-item nav-link active" href="/login">로그인 <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="/login">로그인</a>
                 <a class="nav-item nav-link" href="/register">회원가입</a>
             </div>
         </div>
     </nav>
 
     <div class="row align-items-center h-100 m-0 p-2">
-        <form method="POST" action="/login" class="col-12 p-3 bg-light shadow">
+        <form method="POST" action="/otp" class="col-12 p-3 bg-light shadow">
             <div class="display-4 mb-4">
-                로그인
+                OTP 인증
             </div>
             <div class="form-group">
-                <label for="user-id">아이디</label>
-                <input type="text" name="username" class="form-control" id="user-id" placeholder="gildong123" autofocus required >
+                <label for="user-id">OTP</label>
+                <input type="text" name="otp" class="form-control" id="otp" placeholder="ABC123" autofocus required >
             </div>
-            <div class="form-group">
-                <label for="user-password">비밀번호</label>
-                <input type="password" name="password" class="form-control" id="user-password" placeholder="••••••••••" required >
-            </div>
-            <button type="submit" class="btn btn-primary float-right mt-4">로그인</button>
+            <button type="submit" class="btn btn-primary float-right mt-4">인증</button>
         </form>
     </div>
 
