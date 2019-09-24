@@ -224,7 +224,7 @@ document.querySelector("#info-submit").addEventListener("click", () => {
             }
         })
             .then(function (response) {
-                return response.json();
+                return response;
             })
             .then(function (myJSON) {
                 // 요청 받는 값
