@@ -31,7 +31,7 @@
         <% for (let i = 1; i <= 18; i++) { %>
             <div class="room col-12 row justify-content-between m-0 py-3 font-size-m border-bottom">
                 <span>컴퓨터 <%= i %>실</span>
-                <button name="room" value="<%= i %>" type="submit" class="btn-open btn btn-outline-success">열기</button>
+                <a name="room" href="/auth" class="btn-open btn btn-outline-success">열기</a>
             </div>
         <% } %>
 
