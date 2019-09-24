@@ -26,7 +26,7 @@ function logRenewal() {
 
 // 로그 리뉴얼 시작
 setTimeout(() => {
-    // logRenewal();
+    logRenewal();
 }, 1000);
 
 
@@ -198,7 +198,6 @@ document.querySelector("#info-submit").addEventListener("click", () => {
     for (let i = 1; i <= 18; i++) {
         roomnum = i;
         classnum = parseInt(document.querySelector("[name=room" + i + "]").value.replace('-', '0'));
-        console.log(classnum);
 
         let path;
         let results;
@@ -212,7 +211,7 @@ document.querySelector("#info-submit").addEventListener("click", () => {
                     startTime: startTime,   // 1569195600000
                     endTime: endTime,       // 1569198600000
                     roomnum: roomnum,       // 1 ~ 18
-                    classnum: classnum      // 101, 102, 103
+                    classnum: classnum      // 000, 101, 102, 103
                 }
             })
                 .then(function (response) {
