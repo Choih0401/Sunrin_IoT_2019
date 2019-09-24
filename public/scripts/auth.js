@@ -17,6 +17,7 @@ document.querySelector("#otp-submit").addEventListener("click", () => {
             // x = JSON.parse(response);
             // return x.json();
             return response.json();
+            document.querySelector("#goHome").click();
         })
         .then(function (myJSON) {
             // 요청 받는 값
