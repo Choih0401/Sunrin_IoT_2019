@@ -12,7 +12,7 @@ function logRenewal() {
         .then(function (response) {
             // x = JSON.parse(response);
             // return x.json();
-            return response.json();
+            return response;
         })
         .then(function (myJSON) {
             // 요청 받는 값
