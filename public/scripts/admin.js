@@ -204,7 +204,7 @@ document.querySelector("#info-submit").addEventListener("click", () => {
         let results;
         for (let i = 1; i <= 18; i++) {
             path = fetch("/api/rent", {
-                method: "post",
+                method: "put",
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded",
                 },
