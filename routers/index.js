@@ -3,7 +3,7 @@ const path = require('path');
 const router = express.Router();
 const db = require('../db/connector.js');
 
-router.get('/', function(req, res){
+router.get('/', function (req, res) {
   let user = req.session.user;
 
   // 주석 해제해야함
@@ -11,34 +11,34 @@ router.get('/', function(req, res){
   //   res.redirect('/login');
   // }
   // else {
-    console.log('[index/index]');
-    res.render('index', {
-    });
+  console.log('[index/index]');
+  res.render('index', {
+  });
   // }
 });
 
 
 // 지워야함 {
-router.get('/login', function(req, res){
+router.get('/login', function (req, res) {
   let user = req.session.user;
-    res.render('login', {
-    });
+  res.render('login', {
+  });
 });
 
-router.get('/register', function(req, res){
+router.get('/register', function (req, res) {
   let user = req.session.user;
-    res.render('register', {
-    });
+  res.render('register', {
+  });
 });
 
-router.get('/admin', function(req, res){
+router.get('/admin', function (req, res) {
   let user = req.session.user;
-    res.render('admin', {
-    });
+  res.render('admin', {
+  });
 });
 // }
 
-router.get('/logout', function(req, res){
+router.get('/logout', function (req, res) {
   console.log('[index/logout]');
   req.session.destroy();
   res.redirect('/')
