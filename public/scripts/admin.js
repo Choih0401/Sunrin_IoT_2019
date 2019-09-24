@@ -26,7 +26,7 @@ function logRenewal() {
 
 // 로그 리뉴얼 시작
 setTimeout(() => {
-    // logRenewal();
+    logRenewal();
 }, 1000);
 
 
