@@ -119,7 +119,7 @@ router.get("/rent", function(req,res){
 
 router.get("/log", function(req,res){
     Log.findAll({
-        order: sequelize.literal('time DESC'), 
+        order: [['time', 'DESC']], 
         limit: 50, 
         offset: 0
     }).then(
