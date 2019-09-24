@@ -24,7 +24,7 @@ router.post("/register", function(req, res) {
 })
 
 router.post("/rent", function(req, res) {
-    Plan.findMany({
+    Plan.findAll({
         where: {
             [Op.and]: [
                 { classnum: 102 }, //req.session.user.classnum },
