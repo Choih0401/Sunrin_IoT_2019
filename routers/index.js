@@ -7,14 +7,14 @@ router.get('/', function (req, res) {
   let user = req.session.user;
 
   // 주석 해제해야함
-  if (user === undefined){
-    res.redirect('/login');
-  }
-  else {
+  // if (user === undefined){
+  //   res.redirect('/login');
+  // }
+  // else {
   console.log('[index/index]');
   res.render('index', {
   });
-  }
+  // }
 });
 
 
