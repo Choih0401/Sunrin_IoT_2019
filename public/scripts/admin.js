@@ -229,7 +229,6 @@ document.querySelector("#info-submit").addEventListener("click", () => {
             .then(function (myJSON) {
                 // 요청 받는 값
                 results = myJSON;
-                console.log("저장됨")
                 saveToast();
             });
 
